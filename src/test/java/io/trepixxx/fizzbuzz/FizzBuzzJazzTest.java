@@ -3,10 +3,10 @@ package io.trepixxx.fizzbuzz;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static io.trepixxx.fizzbuzz.FizzBuzz.convert;
+import static io.trepixxx.fizzbuzz.FizzBuzzJazz.convert;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FizzBuzzTest {
+class FizzBuzzJazzTest {
 
     @ValueSource(ints = {1, 4, 11, 58, 97})
     @ParameterizedTest(name = "number \"{0}\" is converted to {0}")
@@ -25,6 +25,13 @@ class FizzBuzzTest {
     @ParameterizedTest(name = "number \"{0}\" is converted to Buzz")
     void givenBuzzButNotFizzNorJazzNumber_ThenReturnBuzz(Integer number) {
         assertEquals("Buzz", convert(number));
+    }
+
+
+    @ValueSource(ints = {7, 14, 49, 98})
+    @ParameterizedTest(name = "number \"{0}\" is converted to Jazz")
+    void givenJazzButNotFizzNorBuzzNumber_ThenReturnJazz(Integer number) {
+        assertEquals("Jazz", convert(number));
     }
 
     @ValueSource(ints = {15, 30, 45, 90})

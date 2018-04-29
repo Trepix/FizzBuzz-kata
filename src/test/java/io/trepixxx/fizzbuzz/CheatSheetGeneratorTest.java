@@ -27,8 +27,8 @@ class CheatSheetGeneratorTest {
     void shouldPrintNumbersConvertedFrom1To100() {
         CheatSheetGenerator.print();
 
-        String expectedPrintOfTheBeginning = "1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16";
-        String expectedPrintOfTheEnd = "89 FizzBuzz 91 92 Fizz 94 Buzz Fizz 97 98 Fizz";
+        String expectedPrintOfTheBeginning = "1 2 Fizz 4 Buzz Fizz Jazz 8 Fizz Buzz 11 Fizz 13 Jazz FizzBuzz 16";
+        String expectedPrintOfTheEnd = "89 FizzBuzz Jazz 92 Fizz 94 Buzz Fizz 97 Jazz Fizz";
 
         assertTrue(outContent.toString().startsWith(expectedPrintOfTheBeginning));
         assertTrue(outContent.toString().endsWith(expectedPrintOfTheEnd));
