@@ -45,5 +45,11 @@ class FizzBuzzJazzTest {
     void givenFizzJazzButNotBuzzNumber_ThenReturnFizzJazz(Integer number) {
         assertEquals("FizzJazz", convert(number));
     }
+
+    @ValueSource(ints = {35, 70})
+    @ParameterizedTest(name = "number \"{0}\" is converted to BuzzJazz")
+    void givenBuzzJazzButNotFizzNumber_ThenReturnBuzzJazz(Integer number) {
+        assertEquals("BuzzJazz", convert(number));
+    }
 }
 
