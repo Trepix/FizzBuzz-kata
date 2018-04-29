@@ -13,5 +13,13 @@ class FizzBuzzTest {
         assertEquals("4", convert(4));
         assertEquals("7", convert(7));
     }
+
+
+    @Test
+    void givenFizzButNotBuzzNumber_ThenReturnFizz() {
+        assertEquals("Fizz", convert(3));
+        assertEquals("Fizz", convert(33));
+        assertEquals("Fizz", convert(99));
+    }
 }
 
