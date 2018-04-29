@@ -3,6 +3,7 @@ package io.trepixxx.fizzbuzz;
 class FizzBuzzJazz {
     static String convert(Integer number) {
         if (isFizz(number) && isBuzz(number)) return "FizzBuzz";
+        if (isFizz(number) && isJazz(number)) return "FizzJazz";
         if (isFizz(number)) return "Fizz";
         if (isBuzz(number)) return "Buzz";
         if (isJazz(number)) return "Jazz";
