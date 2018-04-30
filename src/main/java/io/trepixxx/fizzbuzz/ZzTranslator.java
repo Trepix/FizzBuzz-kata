@@ -1,7 +1,21 @@
 package io.trepixxx.fizzbuzz;
 
-class FizzBuzzJazz {
-    static String convert(Integer number) {
+import io.trepixxx.fizzbuzz.rules.ZzRule;
+
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
+class ZzTranslator {
+
+    private final List<ZzRule> rules;
+
+    public ZzTranslator(ZzRule... rules) {
+        this.rules = asList(rules);
+    }
+
+
+    String convert(Integer number) {
         if (isFizz(number) && isBuzz(number)) return "FizzBuzz";
         if (isFizz(number) && isJazz(number)) return "FizzJazz";
         if (isBuzz(number) && isJazz(number)) return "BuzzJazz";

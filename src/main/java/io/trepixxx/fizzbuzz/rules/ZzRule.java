@@ -1,6 +1,6 @@
 package io.trepixxx.fizzbuzz.rules;
 
-interface ZzRule {
+public interface ZzRule {
 
     boolean meets(Integer number);
 
