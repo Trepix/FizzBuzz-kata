@@ -46,6 +46,12 @@ When you have solved the problem try with this steps that include new requiremen
 
  * A number is Jazz if it is divisible 7
  
+We consider that this new requirement does not increase complexity so much and still be managed with our initial architecture.
+However it's true that our architecture starts to smell a little bit. 
+Every new concept (Fizz, Buzz, Jazz, --zz...) of our domain force us to re-write at least, the name the tests and the convert function to add the new logic.
+
+    
+ 
 #### Feature 2
 
  * A number is Fizz if it is divisible by 3 or if it has a 3 in it
