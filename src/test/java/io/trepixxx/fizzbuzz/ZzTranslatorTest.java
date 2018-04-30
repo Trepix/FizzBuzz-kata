@@ -1,5 +1,8 @@
 package io.trepixxx.fizzbuzz;
 
+import io.trepixxx.fizzbuzz.rules.BuzzRule;
+import io.trepixxx.fizzbuzz.rules.FizzRule;
+import io.trepixxx.fizzbuzz.rules.JazzRule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -12,7 +15,11 @@ class ZzTranslatorTest {
 
     @BeforeEach
     void instanceRule() {
-        zzTranslator = new ZzTranslator();
+        zzTranslator = new ZzTranslator(
+                new FizzRule(),
+                new BuzzRule(),
+                new JazzRule()
+        );
     }
 
     @ValueSource(ints = {1, 4, 11, 58, 97})

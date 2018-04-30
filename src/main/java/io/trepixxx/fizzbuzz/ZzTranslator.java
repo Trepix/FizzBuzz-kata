@@ -3,38 +3,26 @@ package io.trepixxx.fizzbuzz;
 import io.trepixxx.fizzbuzz.rules.ZzRule;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.joining;
 
 class ZzTranslator {
 
     private final List<ZzRule> rules;
 
-    public ZzTranslator(ZzRule... rules) {
+    ZzTranslator(ZzRule... rules) {
         this.rules = asList(rules);
     }
 
-
     String convert(Integer number) {
-        if (isFizz(number) && isBuzz(number)) return "FizzBuzz";
-        if (isFizz(number) && isJazz(number)) return "FizzJazz";
-        if (isBuzz(number) && isJazz(number)) return "BuzzJazz";
-        if (isFizz(number)) return "Fizz";
-        if (isBuzz(number)) return "Buzz";
-        if (isJazz(number)) return "Jazz";
-        return String.valueOf(number);
+        return Optional.of(
+                rules.stream()
+                        .filter(rule -> rule.meets(number))
+                        .map(ZzRule::getNameZZ)
+                        .collect(joining())
+        ).filter(s -> !s.isEmpty())
+        .orElse(String.valueOf(number));
     }
-
-    private static boolean isFizz(Integer number) {
-        return number % 3 == 0;
-    }
-
-    private static boolean isBuzz(Integer number) {
-        return number % 5 == 0;
-    }
-
-    private static boolean isJazz(Integer number) {
-        return number % 7 == 0;
-    }
-
 }
