@@ -58,3 +58,6 @@ Every new concept (Fizz, Buzz, Jazz, --zz...) of our domain force us to re-write
  * A number is Buzz if it is divisible by 5 or if it has a 5 in it
  * A number is Jazz if it is divisible by 7 or if it has a 7 in it
  
+ As we mentioned the initial solution has a problem scaling up with new requirements, it force us to rethink a new approach.
+ However we can't break the current code, at every refactor it must still working. 
+ With this constraint we advocate for write new code with its testing, but without integrate it until all new modules are done.
