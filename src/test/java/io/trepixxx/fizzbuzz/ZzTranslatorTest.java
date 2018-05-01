@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ZzTranslatorTest {
 
     private ZzTranslator zzTranslator;
-
+    
     @BeforeEach
     void instanceRule() {
         zzTranslator = new ZzTranslator(
@@ -22,12 +22,12 @@ class ZzTranslatorTest {
         );
     }
 
-    @ValueSource(ints = {1, 4, 11, 58, 97})
-    @ParameterizedTest(name = "number \"{0}\" is converted to {0}")
-    void givenNonFizzNorBuzzNorJazzNumber_ThenReturnThisNumber(Integer number) {
+    @ValueSource(ints = {1, 3, 5, 10, 90})
+    @ParameterizedTest(name = "number \"{0}\" is converted to {0} because no rules are provided")
+    void givenNoRules_ReturnNumberAsString(Integer number) {
+        ZzTranslator zzTranslator = new ZzTranslator();
         assertEquals(number.toString(), zzTranslator.convert(number));
     }
-
 
     @ValueSource(ints = {3, 6, 33, 99})
     @ParameterizedTest(name = "number \"{0}\" is converted to Fizz")
@@ -40,7 +40,6 @@ class ZzTranslatorTest {
     void givenBuzzButNotFizzNorJazzNumber_ThenReturnBuzz(Integer number) {
         assertEquals("Buzz", zzTranslator.convert(number));
     }
-
 
     @ValueSource(ints = {7, 14, 49, 98})
     @ParameterizedTest(name = "number \"{0}\" is converted to Jazz")
@@ -66,4 +65,3 @@ class ZzTranslatorTest {
         assertEquals("BuzzJazz", zzTranslator.convert(number));
     }
 }
-
