@@ -53,6 +53,26 @@ class ZzTranslatorTest {
         assertEquals(NUMBER.toString(), zzTranslator.convert(NUMBER));
     }
 
+    @Test
+    void givenMultipleRules_ShouldReturnsTheTranslationOfOnlyMetRules() {
+        String abcTranslation = "abc";
+        String xyzTranslation = "xyz";
+
+        ZzRule abcMetRule = mock(ZzRule.class);
+        when(abcMetRule.meets(NUMBER)).thenReturn(true);
+        when(abcMetRule.getNameZZ()).thenReturn(abcTranslation);
+
+        ZzRule xyzMetRule = mock(ZzRule.class);
+        when(xyzMetRule.meets(NUMBER)).thenReturn(true);
+        when(xyzMetRule.getNameZZ()).thenReturn(xyzTranslation);
+
+        ZzRule notMetRule = mock(ZzRule.class);
+        when(notMetRule.meets(NUMBER)).thenReturn(false);
+
+        ZzTranslator zzTranslator = new ZzTranslator(abcMetRule, notMetRule, xyzMetRule);
+        assertEquals(abcTranslation + xyzTranslation, zzTranslator.convert(NUMBER));
+    }
+
     @ValueSource(ints = {3, 6, 33, 99})
     @ParameterizedTest(name = "number \"{0}\" is converted to Fizz")
     void givenFizzButNotBuzzNorJazzNumber_ThenReturnFizz(Integer number) {
