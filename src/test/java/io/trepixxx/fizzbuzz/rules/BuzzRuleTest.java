@@ -17,14 +17,20 @@ class BuzzRuleTest {
     }
 
     @ValueSource(ints = {5, 10, 60, 95})
-    @ParameterizedTest(name = "number \"{0}\" meets the Buzz Rule")
-    void shouldReturnTrue_BecauseTheyMeetBuzzRule(Integer number) {
+    @ParameterizedTest(name = "number \"{0}\" meets the Buzz Rule because it's multiple of 5")
+    void shouldReturnTrue_BecauseTheyAreMultipleOfFive(Integer number) {
         assertTrue(buzzRule.meets(number));
     }
 
-    @ValueSource(ints = {1, 6, 51, 97})
+    @ValueSource(ints = {5, 51, 53, 95})
+    @ParameterizedTest(name = "number \"{0}\" meets the Buzz Rule because it contains a 5")
+    void shouldReturnTrue_BecauseTheyContainAFiveDigit(Integer number) {
+        assertTrue(buzzRule.meets(number));
+    }
+
+    @ValueSource(ints = {1, 6, 49, 61, 97})
     @ParameterizedTest(name = "number \"{0}\" does not meet the Buzz Rule")
-    void shouldReturnFalse_BecauseTheyDoNotMeetBuzzRule(Integer number) {
+    void shouldReturnFalse_BecauseTheyAreNotMultipleOfFiveAndDoNotContainAFive(Integer number) {
         assertFalse(buzzRule.meets(number));
     }
 

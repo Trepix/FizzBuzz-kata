@@ -24,7 +24,6 @@ class FizzRuleTest {
         assertTrue(fizzRule.meets(number));
     }
 
-
     @ValueSource(ints = {13, 33, 37, 43, 93})
     @ParameterizedTest(name = "number \"{0}\" meets the Fizz Rule because it contains a 3")
     void shouldReturnTrue_BecauseTheyContainAThreeDigit(Integer number) {

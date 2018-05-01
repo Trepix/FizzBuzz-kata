@@ -4,7 +4,7 @@ public class BuzzRule extends ZzRule {
 
     @Override
     public boolean meets(Integer number) {
-        return number % 5 == 0;
+        return isMultipleOrContains(number, 5);
     }
 
     @Override
