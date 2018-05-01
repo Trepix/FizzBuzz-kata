@@ -3,16 +3,19 @@ package io.trepixxx.fizzbuzz;
 import io.trepixxx.fizzbuzz.rules.BuzzRule;
 import io.trepixxx.fizzbuzz.rules.FizzRule;
 import io.trepixxx.fizzbuzz.rules.JazzRule;
+import io.trepixxx.fizzbuzz.rules.ZzRule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class ZzTranslatorTest {
 
     private ZzTranslator zzTranslator;
-    
+
     @BeforeEach
     void instanceRule() {
         zzTranslator = new ZzTranslator(
@@ -27,6 +30,18 @@ class ZzTranslatorTest {
     void givenNoRules_ReturnNumberAsString(Integer number) {
         ZzTranslator zzTranslator = new ZzTranslator();
         assertEquals(number.toString(), zzTranslator.convert(number));
+    }
+
+    @ValueSource(ints = {3, 50, 99})
+    @ParameterizedTest(name = "number \"{0}\" is translated because rule is forced to true")
+    void givenOnlyOneRuleWhichIsAlwaysTrue_ShouldReturnsItsTranslation(Integer number) {
+        String zzRule = "RuleZZ";
+        ZzRule rule = mock(ZzRule.class);
+        when(rule.meets(number)).thenReturn(true);
+        when(rule.getNameZZ()).thenReturn(zzRule);
+
+        ZzTranslator zzTranslator = new ZzTranslator(rule);
+        assertEquals(zzRule, zzTranslator.convert(number));
     }
 
     @ValueSource(ints = {3, 6, 33, 99})
