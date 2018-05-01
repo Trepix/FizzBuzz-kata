@@ -4,7 +4,7 @@ public class FizzRule implements ZzRule {
 
     @Override
     public boolean meets(Integer number) {
-        return number % 3 == 0;
+        return (number % 3 == 0) || String.valueOf(number).contains(String.valueOf(3));
     }
 
     @Override
