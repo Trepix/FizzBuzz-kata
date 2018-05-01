@@ -5,6 +5,7 @@ import io.trepixxx.fizzbuzz.rules.FizzRule;
 import io.trepixxx.fizzbuzz.rules.JazzRule;
 import io.trepixxx.fizzbuzz.rules.ZzRule;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -14,6 +15,7 @@ import static org.mockito.Mockito.when;
 
 class ZzTranslatorTest {
 
+    private static final Integer NUMBER = 5;
     private ZzTranslator zzTranslator;
 
     @BeforeEach
@@ -25,33 +27,30 @@ class ZzTranslatorTest {
         );
     }
 
-    @ValueSource(ints = {1, 3, 5, 10, 90})
-    @ParameterizedTest(name = "number \"{0}\" is converted to {0} because no rules are provided")
-    void givenNoRules_ReturnNumberAsString(Integer number) {
+    @Test
+    void givenNoRules_ReturnNumberAsString() {
         ZzTranslator zzTranslator = new ZzTranslator();
-        assertEquals(number.toString(), zzTranslator.convert(number));
+        assertEquals(NUMBER.toString(), zzTranslator.convert(NUMBER));
     }
 
-    @ValueSource(ints = {3, 50, 99})
-    @ParameterizedTest(name = "number \"{0}\" is translated because rule is forced to true")
-    void givenOnlyOneRuleWhichIsAlwaysTrue_ShouldReturnsItsTranslation(Integer number) {
+    @Test
+    void givenOnlyOneRuleWhichIsAlwaysTrue_ShouldReturnsItsTranslation() {
         String zzRule = "RuleZZ";
         ZzRule rule = mock(ZzRule.class);
-        when(rule.meets(number)).thenReturn(true);
+        when(rule.meets(NUMBER)).thenReturn(true);
         when(rule.getNameZZ()).thenReturn(zzRule);
 
         ZzTranslator zzTranslator = new ZzTranslator(rule);
-        assertEquals(zzRule, zzTranslator.convert(number));
+        assertEquals(zzRule, zzTranslator.convert(NUMBER));
     }
 
-    @ValueSource(ints = {3, 50, 99})
-    @ParameterizedTest(name = "number \"{0}\" is translated because rule is forced to false")
-    void givenOnlyOneRuleWhichIsAlwaysFalse_ShouldReturnsNumberAsString(Integer number) {
+    @Test
+    void givenOnlyOneRuleWhichIsAlwaysFalse_ShouldReturnsNumberAsString() {
         ZzRule rule = mock(ZzRule.class);
-        when(rule.meets(number)).thenReturn(false);
+        when(rule.meets(NUMBER)).thenReturn(false);
 
         ZzTranslator zzTranslator = new ZzTranslator(rule);
-        assertEquals(number.toString(), zzTranslator.convert(number));
+        assertEquals(NUMBER.toString(), zzTranslator.convert(NUMBER));
     }
 
     @ValueSource(ints = {3, 6, 33, 99})
