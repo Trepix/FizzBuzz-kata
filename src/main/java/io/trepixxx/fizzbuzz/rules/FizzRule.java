@@ -1,10 +1,10 @@
 package io.trepixxx.fizzbuzz.rules;
 
-public class FizzRule implements ZzRule {
+public class FizzRule extends ZzRule {
 
     @Override
     public boolean meets(Integer number) {
-        return (number % 3 == 0) || String.valueOf(number).contains(String.valueOf(3));
+        return isMultipleOrContains(number, 3);
     }
 
     @Override

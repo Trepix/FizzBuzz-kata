@@ -1,8 +1,14 @@
 package io.trepixxx.fizzbuzz.rules;
 
-public interface ZzRule {
+import static java.lang.String.valueOf;
 
-    boolean meets(Integer number);
+public abstract class ZzRule {
 
-    String getNameZZ();
+    public abstract boolean meets(Integer number);
+
+    public abstract String getNameZZ();
+
+    static boolean isMultipleOrContains(Integer number, Integer multipleOrContent) {
+        return number % multipleOrContent == 0 || valueOf(number).contains(multipleOrContent.toString());
+    }
 }

@@ -1,6 +1,6 @@
 package io.trepixxx.fizzbuzz.rules;
 
-public class BuzzRule implements ZzRule {
+public class BuzzRule extends ZzRule {
 
     @Override
     public boolean meets(Integer number) {
