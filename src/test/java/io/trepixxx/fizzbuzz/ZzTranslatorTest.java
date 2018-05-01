@@ -44,6 +44,16 @@ class ZzTranslatorTest {
         assertEquals(zzRule, zzTranslator.convert(number));
     }
 
+    @ValueSource(ints = {3, 50, 99})
+    @ParameterizedTest(name = "number \"{0}\" is translated because rule is forced to false")
+    void givenOnlyOneRuleWhichIsAlwaysFalse_ShouldReturnsNumberAsString(Integer number) {
+        ZzRule rule = mock(ZzRule.class);
+        when(rule.meets(number)).thenReturn(false);
+
+        ZzTranslator zzTranslator = new ZzTranslator(rule);
+        assertEquals(number.toString(), zzTranslator.convert(number));
+    }
+
     @ValueSource(ints = {3, 6, 33, 99})
     @ParameterizedTest(name = "number \"{0}\" is converted to Fizz")
     void givenFizzButNotBuzzNorJazzNumber_ThenReturnFizz(Integer number) {
