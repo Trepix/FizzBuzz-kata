@@ -28,8 +28,8 @@ class CheatSheetGeneratorTest {
         CheatSheetGenerator.print();
 
         String expectedPrintOfTheBeginning = "1 2 Fizz 4 Buzz Fizz Jazz 8 Fizz Buzz 11 Fizz Fizz Jazz FizzBuzz 16";
-        String expectedPrintContainingJazzCombinations = "FizzBuzz 61 62 FizzJazz 64 Buzz Fizz 67 68 Fizz BuzzJazz";
-        String expectedPrintOfTheEnd = "89 FizzBuzz Jazz 92 Fizz 94 Buzz Fizz 97 Jazz Fizz";
+        String expectedPrintContainingJazzCombinations = "FizzBuzz 61 62 FizzJazz 64 Buzz Fizz Jazz 68 Fizz BuzzJazz";
+        String expectedPrintOfTheEnd = "89 FizzBuzz Jazz 92 Fizz 94 Buzz Fizz Jazz Jazz Fizz";
 
 
         String outString = outContent.toString();

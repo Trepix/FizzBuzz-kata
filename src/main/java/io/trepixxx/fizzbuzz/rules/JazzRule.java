@@ -4,7 +4,7 @@ public class JazzRule extends ZzRule {
 
     @Override
     public boolean meets(Integer number) {
-        return number % 7 == 0;
+        return isMultipleOrContains(number, 7);
     }
 
     @Override
